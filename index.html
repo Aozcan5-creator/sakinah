@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#102924">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sakīnah">
+  <meta name="description" content="Dein stiller Begleiter für Duʿāʾ, Geduld, Reflexion und einen sanfteren Charakter.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>Sakīnah — Jeden Tag ein wenig besser</title>
+  <style>
+  :root{color-scheme:light;--bg:#f4f3ef;--paper:#fffefa;--ink:#1b322e;--sub:#71817a;--green:#123d34;--green2:#1a5749;--mint:#dce9de;--line:#e9e9e2;--gold:#a98750;--radius:22px;--safeBottom:env(safe-area-inset-bottom,0px);--shadow:0 10px 34px rgba(20,43,36,.055)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;min-height:100dvh;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
+  button,input,textarea,select{font:inherit}
+  button{cursor:pointer}
+  button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #8fbba7;outline-offset:2px}
+  .app{max-width:600px;margin:auto;min-height:100dvh;padding-bottom:calc(97px + var(--safeBottom))}
+  .header{background:var(--green);color:#f4f5ee;padding:calc(16px + env(safe-area-inset-top,0px)) 22px 28px;position:relative;overflow:hidden;border-radius:0 0 32px 32px}
+  .header:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid rgba(233,220,181,.12);right:-114px;top:-75px;box-shadow:0 0 0 30px rgba(233,220,181,.025),0 0 0 65px rgba(233,220,181,.02);pointer-events:none}
+  .top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;font-family:Georgia,serif;font-size:23px;letter-spacing:-.9px}
+  .brand-symbol{width:29px;height:29px;display:grid;place-items:center;color:#d7c08a;font-size:26px;transform:rotate(-19deg)}
+  .head-btn{width:42px;height:42px;border-radius:15px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:#fff;display:grid;place-items:center}
+  .date{color:#bacfc3;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:27px;font-weight:700}
+  .hero-title{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:36px;line-height:1.1;letter-spacing:-.9px;margin:9px 0 9px;max-width:340px}
+  .hero-sub{font-size:14px;line-height:1.65;color:#cedcd2;margin:0;max-width:310px}
+  .hero-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:23px}
+  .day-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(234,225,195,.24);border-radius:99px;color:#e9d6a4;font-size:12px;font-weight:600;letter-spacing:.02em}
+  .dot{width:7px;height:7px;border-radius:50%;background:#cfb377;display:inline-block}
+  .hero-stat{font-size:12px;color:#bdd0c5;text-align:right}.hero-stat strong{display:block;color:#fff;font-size:24px;font-weight:500;letter-spacing:-.6px}
+  .content{padding:21px 18px 30px}
+  .section{display:none;animation:appear .24s ease}
+  .section.active{display:block}
+  @keyframes appear{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .section-eyebrow{font-size:11px;letter-spacing:.15em;color:#7f9186;text-transform:uppercase;font-weight:800;margin:0 0 8px}
+  h2{font-family:Georgia,serif;font-size:25px;font-weight:400;letter-spacing:-.4px;margin:0 0 14px}
+  h3{font-size:15px;letter-spacing:-.1px;margin:0 0 12px}
+  .card{background:var(--paper);border:1px solid #eceee7;border-radius:var(--radius);box-shadow:var(--shadow);padding:19px;margin-bottom:15px}
+  .card-tight{padding:16px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .sub{font-size:13px;color:var(--sub);line-height:1.6}
+  .caption{font-size:11px;color:#91a096;line-height:1.5}
+  .muted{color:var(--sub)}
+  .prowrap{display:flex;align-items:center;gap:17px}
+  .ring{width:84px;height:84px;flex-shrink:0;border-radius:50%;background:conic-gradient(var(--green2) 0%,#e4eae3 0%);display:grid;place-items:center;transition:background .2s}
+  .ring>div{width:70px;height:70px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
+  .ring small{font-size:10px;color:#87968a;margin-left:1px}
+  .progress-info{flex:1}.progress-info strong{display:block;font-size:17px;margin-bottom:4px}
+  .line{height:1px;background:var(--line);margin:16px 0}
+  .task{display:flex;gap:13px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0eb;cursor:pointer;user-select:none}
+  .task:last-child{border:0;padding-bottom:0}
+  .task:first-of-type{padding-top:1px}
+  .check{height:26px;width:26px;flex:0 0 26px;border:1.5px solid #c9d4cc;border-radius:9px;display:grid;place-items:center;color:transparent;transition:all .15s}
+  .task.done .check{background:var(--green2);color:#fff;border-color:var(--green2)}
+  .task.done .task-title{color:#88968c;text-decoration:line-through;text-decoration-color:#bec9be}
+  .task-title{font-weight:650;font-size:13px;line-height:1.3}.task-sub{font-size:11px;color:#97a29a;line-height:1.5;margin-top:3px}
+  .soft-card{background:#e6ede5;border:1px solid #dce9d9;border-radius:var(--radius);padding:20px;margin-bottom:15px}
+  .soft-card .arabic{color:#234d3d;font-size:29px;line-height:1.85;margin:10px 0}
+  .quote{font-family:Georgia,serif;font-size:19px;line-height:1.52;letter-spacing:-.15px;color:#274438}
+  .pill{font-size:11px;letter-spacing:.04em;display:inline-flex;border:1px solid #d6e1d6;border-radius:100px;padding:6px 10px;color:#56725f;font-weight:700}
+  .button{border:0;background:var(--green);color:#fff;border-radius:13px;padding:12px 16px;min-height:44px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .button:active,.small-btn:active,.head-btn:active,.nav-btn:active{transform:scale(.98)}
+  .button.secondary{background:#eaf0e9;color:#285142}.button.ghost{background:transparent;border:1px solid #dce5da;color:#325342}
+  .button.wide{width:100%}
+  .small-btn{border:1px solid #dce6da;background:#eff4ee;color:#315843;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:700;min-height:38px}
+  .arabic{font-family:"Geeza Pro","Noto Naskh Arabic","Amiri","Times New Roman",serif;direction:rtl;unicode-bidi:plaintext;text-align:right;font-size:29px;line-height:1.9;letter-spacing:0}
+  .translit{font-size:12px;color:#557162;line-height:1.85;font-style:italic;overflow-wrap:anywhere}
+  .meaning{font-size:14px;line-height:1.8;color:#31483f}
+  .dua-card{padding:20px;margin-bottom:14px}
+  .dua-title{font-size:16px;font-weight:700;margin:2px 0 3px}.dua-src{font-size:11px;color:#87978e}
+  .dua-tag{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-weight:800}
+  .dua-arabic{margin:17px 0;background:#f5f7f2;border-radius:15px;padding:13px 16px;font-size:26px}
+  .dua-more{display:none;margin-top:10px}.dua-more.show{display:block}
+  .dua-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+  .daily-dua{background:#113e34;color:#f4f6ed;border-radius:22px;padding:20px;margin-bottom:15px;position:relative;overflow:hidden}
+  .daily-dua .arabic{color:#f8f1dc;font-size:27px}.daily-dua .caption{color:#afc4b7}
+  .daily-dua:before{content:"✦";font-size:120px;color:rgba(255,255,255,.04);position:absolute;right:8px;top:-16px;pointer-events:none}
+  .calm-intro{background:var(--green);padding:25px 20px;border-radius:25px;color:#fff;text-align:center;margin-bottom:15px}
+  .breath-circle{height:182px;width:182px;border:1px solid rgba(230,230,206,.25);border-radius:50%;display:grid;place-items:center;margin:18px auto;position:relative}
+  .breath-circle:before{content:"";height:120px;width:120px;border-radius:50%;position:absolute;background:radial-gradient(circle at 40% 32%,#b8dcc3,#5b9b7d);opacity:.85;transform:scale(.78);transition:transform 4s ease-in-out;box-shadow:0 0 36px rgba(164,219,187,.17)}
+  .breath-circle.inhale:before{transform:scale(1.25);transition-duration:4s}
+  .breath-circle.exhale:before{transform:scale(.78);transition-duration:6s}
+  .breath-content{position:relative;z-index:1;text-shadow:0 1px 7px rgba(10,47,29,.5)}
+  .breath-content strong{display:block;font-size:19px;font-weight:600}.breath-content small{display:block;font-size:12px;margin-top:5px}
+  .calm-intro .button{background:#e5e8d4;color:#163e32;min-width:140px}
+  .steps{counter-reset:step;display:grid;gap:11px}
+  .step{display:flex;gap:13px;align-items:flex-start;padding:14px;background:#f7f8f4;border-radius:15px}
+  .step-number{height:28px;width:28px;flex-shrink:0;border-radius:50%;background:#e3ece3;color:#325e46;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .step-title{font-weight:700;font-size:13px;margin:2px 0 3px}.step-desc{font-size:12px;color:#77877b;line-height:1.6}
+  .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:14px 0 5px}
+  .mood{display:flex;align-items:center;flex-direction:column;gap:6px;border:1px solid #eceee8;background:#f8f9f5;border-radius:13px;padding:12px 3px 10px;color:#75877b;font-size:11px;min-height:73px}
+  .mood .emoji{font-size:23px}.mood.selected{border-color:#89aa97;background:#e4f0e6;color:#204c3a;font-weight:800}
+  label.field-label{font-size:12px;color:#677b6e;font-weight:750;display:block;margin:15px 0 7px}
+  textarea,input[type="text"]{width:100%;border:1px solid #e1e8de;background:#fafbf8;color:#213e30;border-radius:14px;padding:13px;outline:none;resize:vertical;font-size:14px;line-height:1.6}
+  textarea{min-height:87px}
+  .meta{font-size:11px;color:#839287}
+  .journal-note{font-size:12px;color:#7d8f81;line-height:1.5;margin-top:10px}
+  .nav{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:center;pointer-events:none}
+  .nav-inner{pointer-events:auto;width:min(600px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fffefa;border-top:1px solid #e5eae3;padding:8px 12px calc(8px + var(--safeBottom));box-shadow:0 -8px 30px rgba(30,45,36,.035)}
+  .nav-btn{border:0;background:transparent;color:#9baca1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px 0;min-height:52px;font-size:10px;font-weight:700}
+  .nav-btn svg{height:21px;width:21px;stroke:currentColor;stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .nav-btn.active{color:var(--green2)}
+  .nav-btn.active .nav-icon{background:#e4eee4;border-radius:10px}
+  .nav-icon{padding:6px;display:grid;place-items:center}
+  .nav-icon svg{width:21px;height:21px}
+  .overlay{display:none;position:fixed;inset:0;z-index:30;background:rgba(7,23,17,.52);padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom);align-items:center;justify-content:center}
+  .overlay.open{display:flex}
+  .modal{background:var(--paper);border-radius:24px;max-width:500px;width:100%;max-height:88dvh;overflow:auto;padding:22px}
+  .modal h2{margin-bottom:5px}.close{font-size:24px;background:transparent;border:0;color:#587063;padding:5px 10px}
+  .modal .button{margin-top:8px}
+  .toast{position:fixed;z-index:60;left:50%;bottom:calc(92px + var(--safeBottom));transform:translate(-50%,12px);background:#173d33;color:white;border-radius:12px;padding:11px 15px;box-shadow:0 8px 20px #193b332d;font-size:12px;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .hidden{display:none!important}
+  @media(min-width:650px){body{padding-top:18px}.app{border-radius:30px 30px 0 0;overflow:hidden;box-shadow:0 10px 70px #213d3020}.header{border-radius:0 0 30px 30px}}
+  @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="top">
+      <div class="brand"><span class="brand-symbol" aria-hidden="true">☾</span>Sakīnah</div>
+      <button class="head-btn" id="settingsBtn" aria-label="Einstellungen öffnen">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15l1.1.9-2 3.5-1.4-.5a8 8 0 0 1-2.1 1.2l-.3 1.5h-4l-.3-1.5a8 8 0 0 1-2.1-1.2l-1.4.5-2-3.5L6 15a8 8 0 0 1 0-2.4l-1.1-.9 2-3.5 1.4.5a8 8 0 0 1 2.1-1.2l.3-1.5h4l.3 1.5a8 8 0 0 1 2.1 1.2l1.4-.5 2 3.5-1.1.9a8 8 0 0 1 0 2.4Z" transform="translate(0 -1)"/></svg>
+      </button>
+    </div>
+    <div class="date" id="dateHeader">HEUTE</div>
+    <h1 class="hero-title" id="heroTitle">Ein ruhiges Herz.<br>Ein guter Charakter.</h1>
+    <p class="hero-sub" id="heroSub">Jede kleine Entscheidung ist eine neue Gelegenheit, besser zu handeln.</p>
+    <div class="hero-bottom"><span class="day-pill"><span class="dot"></span><span id="challengeDay">Tag 1 von 30</span></span><span class="hero-stat"><strong id="streak">0</strong>Tage in Folge</span></div>
+  </header>
+  <main class="content">
+    <section id="page-today" class="section active" aria-label="Heute">
+      <div class="card"><div class="prowrap"><div class="ring" id="ring"><div><span id="percent">0</span><small>%</small></div></div><div class="progress-info"><p class="section-eyebrow">DEIN HEUTIGER WEG</p><strong id="progressTitle">Ein neuer Anfang</strong><div class="sub" id="progressText">Deine kleinen Schritte zählen.</div></div></div></div>
+      <div class="row" style="margin:22px 0 12px"><h2 style="margin:0">Deine täglichen Schritte</h2><span class="pill" id="doneCount">0 / 5</span></div>
+      <div class="card card-tight" id="taskList" aria-label="Tagescheckliste"></div>
+      <div class="soft-card"><div class="row"><span class="pill" style="background:#f1f4e7">GEDANKE DES TAGES</span><span style="color:#a88c54">✦</span></div><p class="quote" id="quote">Stärke zeigt sich darin, den eigenen Zorn zu beherrschen.</p><p class="caption" id="quoteSrc">Sinngemäß nach Sahih al-Bukhari 6114</p></div>
+      <div class="daily-dua"><p class="section-eyebrow" style="color:#b9cbbd">DUʿĀʾ DES TAGES</p><div class="arabic" lang="ar" id="todayArabic">اللَّهُمَّ اهْدِنِي لِأَحْسَنِ الْأَخْلَاقِ</div><div style="font-size:13px;line-height:1.7;color:#d4e5d7" id="todayMeaning">O Allah, leite mich zu den besten Charaktereigenschaften.</div><button class="button secondary" style="margin-top:17px" data-goto="dua">Alle Duʿāʾ ansehen →</button></div>
+      <div class="card"><p class="section-eyebrow">DEINE HEUTIGE ÜBUNG</p><h3 id="dayChallengeTitle">Sprich mit Milde</h3><p class="sub" id="dayChallengeDesc"></p></div>
+    </section>
+    <section id="page-dua" class="section" aria-label="Bittgebete">
+      <p class="section-eyebrow">WORTE AN ALLAH</p><h2>Duʿāʾ für dein Herz</h2><p class="sub" style="margin:-4px 0 20px">Drei überlieferte Bittgebete und ein persönliches Duʿāʾ. Sprich sie bewusst, nicht nur schnell.</p>
+      <div id="duaList"></div>
+      <div class="card" style="border-color:#d6e7dc;background:#f0f5ef"><p class="section-eyebrow">WICHTIG</p><p class="sub" style="margin:0">Das lange persönliche Bittgebet ist frei formuliert, nicht als Wortlaut des Propheten ﷺ überliefert. Es gibt keine vorgeschriebene Anzahl der Wiederholungen für diesen Plan.</p></div>
+    </section>
+    <section id="page-calm" class="section" aria-label="Wut beruhigen">
+      <p class="section-eyebrow">WENN ES ZU VIEL WIRD</p><h2>Zurück zur Ruhe</h2>
+      <div class="calm-intro"><div class="pill" style="color:#e6dcc4;border-color:#769083">90 SEKUNDEN FÜR DICH</div><div class="breath-circle" id="breathCircle"><div class="breath-content"><strong id="breathLabel">Bereit?</strong><small id="breathCounter">01:30</small></div></div><p style="color:#d5e4d8;font-size:13px;margin:4px 0 17px">4 Sekunden einatmen · 6 Sekunden ausatmen</p><button class="button" id="breathBtn">Übung starten</button><button class="button ghost hidden" style="margin-left:8px;border-color:#698c7c;color:white" id="breathReset">Neu</button></div>
+      <div class="card"><p class="section-eyebrow">SOFORT BEI WUT</p><div class="steps"><div class="step"><div class="step-number">1</div><div><div class="step-title">Unterbrich den Streit</div><div class="step-desc">Sag ruhig: „Ich brauche einen Moment. Wir sprechen später.“</div></div></div><div class="step"><div class="step-number">2</div><div><div class="step-title">Suche Zuflucht bei Allah</div><div class="arabic" lang="ar" style="font-size:22px;margin:5px 0">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div><div class="step-desc">Aʿūdhu billāhi mina sh-shayṭāni r-rajīm. Nach Sahih al-Bukhari 3282.</div></div></div><div class="step"><div class="step-number">3</div><div><div class="step-title">Atme und nimm Abstand</div><div class="step-desc">Entspanne Kiefer und Schultern. Rede erst weiter, wenn du ohne Beleidigung sprechen kannst.</div></div></div><div class="step"><div class="step-number">4</div><div><div class="step-title">Formuliere ohne Angriff</div><div class="step-desc">Statt „Du kannst nichts“: „Ich brauche, dass du diese Aufgabe selbst übernimmst.“</div></div></div></div></div>
+      <div class="soft-card"><div class="quote" style="font-size:17px">Du musst nicht auf alles reagieren. Sanftmut ist keine Schwäche.</div></div>
+    </section>
+    <section id="page-journal" class="section" aria-label="Reflexion">
+      <p class="section-eyebrow">INNEHALTEN & WACHSEN</p><h2>Dein Herz-Tagebuch</h2><p class="sub" style="margin:-4px 0 20px">Ehrlichkeit ohne Selbstverachtung. Du bist mehr als dein letzter Fehler.</p>
+      <div class="card"><h3>Wie fühlst du dich heute?</h3><div class="moods" id="moods"><button class="mood" data-mood="1"><span class="emoji">😔</span>Schwer</button><button class="mood" data-mood="2"><span class="emoji">😟</span>Unruhig</button><button class="mood" data-mood="3"><span class="emoji">😐</span>Neutral</button><button class="mood" data-mood="4"><span class="emoji">🙂</span>Ruhig</button><button class="mood" data-mood="5"><span class="emoji">😌</span>Friedlich</button></div><p class="caption">Deine Angaben bleiben auf deinem Gerät gespeichert.</p></div>
+      <div class="card"><h3>Ein Moment der Reflexion</h3><label class="field-label" for="trigger">Was hat mich heute herausgefordert?</label><textarea id="trigger" placeholder="Was ist passiert? Was habe ich gespürt?"></textarea><label class="field-label" for="response">Wie habe ich reagiert?</label><textarea id="response" placeholder="Was habe ich gut gemacht, was nicht?"></textarea><label class="field-label" for="next">Wie möchte ich beim nächsten Mal handeln?</label><textarea id="next" placeholder="Eine konkrete, freundliche Alternative ..."></textarea><div class="row" style="margin-top:12px"><span class="meta" id="savedLabel">Automatisch gespeichert</span><button class="small-btn" id="saveJournal">Speichern ✓</button></div></div>
+      <div class="soft-card"><p class="section-eyebrow">ERINNERUNG</p><div class="quote" style="font-size:18px">Reue soll dich verbessern – nicht zerstören.</div></div>
+      <div class="card"><div class="row"><div><h3 style="margin:0 0 3px">Dein Weg</h3><div class="sub" id="statsText">Deine ersten Schritte zählen.</div></div><div style="font-size:30px;color:#678d71">✺</div></div></div>
+    </section>
+  </main>
+</div>
+<nav class="nav" aria-label="Hauptnavigation"><div class="nav-inner">
+  <button class="nav-btn active" data-nav="today" aria-label="Heute"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Heute</button>
+  <button class="nav-btn" data-nav="dua" aria-label="Bittgebete"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1zM12 6v14"/></svg></span>Duʿāʾ</button>
+  <button class="nav-btn" data-nav="calm" aria-label="Ruhe"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 22v-6M12 16C6 16 4 12 4 9c4 0 8 2 8 7Zm0 0c0-6 2-9 8-9 0 5-2 9-8 9ZM12 8c-2-2-2-4 0-6 2 2 2 4 0 6Z"/></svg></span>Ruhe</button>
+  <button class="nav-btn" data-nav="journal" aria-label="Tagebuch"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm3 5h6M9 12h6M9 16h4"/></svg></span>Reflexion</button>
+</div></nav>
+<div class="overlay" id="settingsOverlay" role="dialog" aria-modal="true" aria-label="Einstellungen"><div class="modal"><div class="row"><h2>Einstellungen</h2><button class="close" id="closeSettings" aria-label="Schließen">×</button></div><p class="sub">Deine Daten liegen lokal auf diesem Gerät und werden nicht an einen Server übermittelt.</p><div class="line"></div><h3>30-Tage-Reise</h3><p class="sub">Begonnen am <strong id="startDate">–</strong>. Nach Tag 30 kannst du den Plan weiterverwenden oder neu starten.</p><button class="button secondary" id="restartChallenge">30 Tage neu beginnen</button><div class="line"></div><h3>Datensicherung</h3><p class="sub">Du kannst dein Tagebuch und deinen Fortschritt als JSON-Datei sichern und später wieder einlesen.</p><div class="row" style="justify-content:flex-start;flex-wrap:wrap"><button class="button secondary" id="exportBtn">Daten exportieren</button><label class="button ghost" style="cursor:pointer">Importieren<input type="file" id="importFile" accept="application/json,.json" hidden></label></div><div class="line"></div><h3>Auf dem iPhone installieren</h3><p class="sub">Nach dem Veröffentlichen auf einer HTTPS-Webadresse: Safari öffnen → Teilen → „Zum Home-Bildschirm“ → „Als Web-App öffnen“. Danach ist die App auch offline nutzbar, sobald sie einmal geladen wurde.</p><button class="button ghost" id="resetAll">Alle lokalen Daten löschen</button><p class="caption" style="margin-top:13px">Sakīnah · Persönliches Hilfsmittel, keine religiöse Rechtsauskunft oder Therapie. Duʿāʾ-Texte werden mit Quellen unterschieden.</p></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {'use strict';
+  const KEY='sakinah-data-v1';
+  const todayKey=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  const fromKey=s=>new Date(s+'T12:00:00');
+  const msDay=86400000;
+  const dateLong=s=>fromKey(s).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
+  const dateHeader=()=>new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});
+  const $=id=>document.getElementById(id);
+  function load(){try{const d=JSON.parse(localStorage.getItem(KEY));return d&&typeof d==='object'?d:null}catch(e){return null}}
+  let state=load()||{start:todayKey(),days:{}};
+  if(!state.start||!/^\d{4}-\d\d-\d\d$/.test(state.start))state.start=todayKey();
+  if(!state.days||typeof state.days!=='object')state.days={};
+  let currentDay=todayKey();
+  const day=()=>{if(!state.days[currentDay]||typeof state.days[currentDay]!=='object')state.days[currentDay]={checks:[],mood:null,trigger:'',response:'',next:''};return state.days[currentDay]};
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch(e){toast('Speichern nicht möglich – Speicher prüfen');return false}};
+  const tasks=[
+    ['Mit Duʿāʾ beginnen','Bitte Allah bewusst um einen schönen Charakter.'],
+    ['Niemanden verspotten','Auch nicht als Spaß oder aus Ärger.'],
+    ['Einmal bewusst innehalten','Erst atmen, dann ruhig antworten.'],
+    ['Einem Menschen mit Milde begegnen','Geduldig zuhören, helfen oder freundlich Grenzen setzen.'],
+    ['Abends ehrlich reflektieren','Ein Fehler, eine Erkenntnis und ein guter Schritt.']
+  ];
+  const quotes=[
+    ['Stärke zeigt sich darin, den eigenen Zorn zu beherrschen.','Sinngemäß nach Sahih al-Bukhari 6114'],
+    ['Du kannst bestimmt sein, ohne jemanden kleinzumachen.','Deine Erinnerung'],
+    ['Sprich so mit anderen, wie du angesprochen werden möchtest.','Deine Erinnerung'],
+    ['Ein sanftes Wort kann mehr bewirken als hundert laute.','Deine Erinnerung'],
+    ['Nicht jeder Fehler eines anderen braucht deine Antwort.','Deine Erinnerung'],
+    ['Eine Entschuldigung beginnt mit Worten. Vertrauen wächst durch Taten.','Deine Erinnerung'],
+    ['Du wächst nicht durch Perfektion, sondern durch aufrichtige Besserung.','Deine Erinnerung']
+  ];
+  const challenges=[
+    ['Kein verletzender Spitzname','Verzichte heute vollständig auf Schimpfwörter und abwertende Spitznamen.'],
+    ['Erst ausreden lassen','Lass jeden Gesprächspartner seinen Satz beenden.'],
+    ['Einmal bewusst schweigen','Unterbrich eine Provokation, bevor du reagierst.'],
+    ['Geduldig Fragen beantworten','Beantworte Fragen freundlich oder erkläre ruhig, wann du helfen kannst.'],
+    ['Langsamer sprechen','Senke deine Lautstärke besonders bei Meinungsverschiedenheiten.'],
+    ['Gut über jemanden sprechen','Sage heute eine aufrichtige positive Sache über einen anderen Menschen.'],
+    ['Keine Ironie auf Kosten anderer','Achte darauf, ob dein Humor jemanden verletzt.'],
+    ['Die eigene Absicht prüfen','Frage dich vor einer Korrektur: Will ich helfen oder gewinnen?'],
+    ['Ein ehrliches Danke','Bedanke dich bewusst bei jemandem, der dir Arbeit abnimmt.'],
+    ['Ein Fehler ohne Ausrede','Gestehe eine kleine Verfehlung ein, ohne ein „aber“ anzuhängen.'],
+    ['Eine ruhige Grenze','Formuliere eine klare Grenze ohne Abwertung.'],
+    ['Mitgefühl üben','Überlege bei einem schwierigen Menschen, was ihn gerade belasten könnte.'],
+    ['Keine vorschnellen Urteile','Unterstelle anderen heute keine schlechten Absichten.'],
+    ['Freundlichkeit bei Erschöpfung','Achte auf deinen Ton, wenn du müde bist.'],
+    ['Erst verstehen','Stelle eine ehrliche Rückfrage, bevor du widersprichst.'],
+    ['Eine stille gute Tat','Hilf jemandem, ohne dafür Anerkennung zu erwarten.'],
+    ['Geduld in der Arbeit','Übernimm Verantwortung, aber lass anderen Raum zum Lernen.'],
+    ['Den Streit nicht gewinnen müssen','Beende ein unnötiges Wortgefecht freundlich.'],
+    ['Jemandem vergeben','Lass einen kleinen Ärger bewusst los.'],
+    ['Friedlich korrigieren','Korrigiere heute genau einen Fehler ruhig und sachlich.'],
+    ['Wahrhaftig und sanft','Sei ehrlich, ohne dabei hart zu werden.'],
+    ['Hinter dem Ärger schauen','Notiere, welches Bedürfnis sich unter deiner Wut verbirgt.'],
+    ['Respekt auch im Scherz','Scherze heute so, dass niemand bloßgestellt wird.'],
+    ['Demut zeigen','Gib offen zu, wenn jemand anders etwas besser weiß.'],
+    ['Drei Atemzüge','Atme vor jeder schwierigen Antwort dreimal ruhig.'],
+    ['Ein aufrichtiger Gruß','Begrüße Menschen herzlich, unabhängig von ihrer Stimmung.'],
+    ['Nicht über andere lästern','Lenke abwertendes Gerede freundlich um.'],
+    ['Für andere Duʿāʾ machen','Bitte Allah um Gutes für jemanden, der dich herausfordert.'],
+    ['Drei gute Veränderungen','Notiere drei Dinge, die dir inzwischen leichter fallen.'],
+    ['Ein neuer Anfang','Wähle die Gewohnheiten, die du dauerhaft beibehalten willst.']
+  ];
+  const prayers=[
+    {type:'ÜBERLIEFERT',title:'Für einen schönen Charakter',source:'Sahih Muslim 771a (Auszug)',arabic:'اللَّهُمَّ اهْدِنِي لِأَحْسَنِ الْأَخْلَاقِ، لَا يَهْدِي لِأَحْسَنِهَا إِلَّا أَنْتَ، وَاصْرِفْ عَنِّي سَيِّئَهَا، لَا يَصْرِفُ عَنِّي سَيِّئَهَا إِلَّا أَنْتَ',latin:'Allāhumma-hdinī li-aḥsani l-akhlāq, lā yahdī li-aḥsanihā illā Anta, waṣrif ʿannī sayyiʾahā, lā yaṣrifu ʿannī sayyiʾahā illā Anta.',meaning:'O Allah, leite mich zu den besten Charaktereigenschaften. Niemand kann mich außer Dir zu ihnen leiten. Halte die schlechten Charaktereigenschaften von mir fern. Niemand außer Dir kann sie von mir fernhalten.'},
+    {type:'ÜBERLIEFERT',title:'Für die Reinigung der Seele',source:'Sahih Muslim 2722',arabic:'اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا أَنْتَ وَلِيُّهَا وَمَوْلَاهَا',latin:'Allāhumma āti nafsī taqwāhā, wa zakkihā Anta khayru man zakkāhā, Anta waliyyuhā wa mawlāhā.',meaning:'O Allah, gib meiner Seele ihre Gottesfurcht und reinige sie. Du bist der Beste, der sie reinigt. Du bist ihr Beschützer und ihr Herr.'},
+    {type:'KORAN',title:'Für Reue und Vergebung',source:'Koran 7:23',arabic:'رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ',latin:'Rabbanā ẓalamnā anfusanā, wa in lam taghfir lanā wa tarḥamnā lanakūnanna mina l-khāsirīn.',meaning:'Unser Herr, wir haben uns selbst Unrecht getan. Wenn Du uns nicht vergibst und Dich unser erbarmst, werden wir gewiss zu den Verlierern gehören.'},
+    {type:'PERSÖNLICH FORMULIERT',title:'Mein langes Duʿāʾ für Veränderung',source:'Freies Bittgebet · nicht als Hadith überliefert',arabic:'اللَّهُمَّ يَا رَحْمَٰنُ يَا رَحِيمُ، أَصْلِحْ قَلْبِي وَنِيَّتِي وَأَخْلَاقِي.\nاللَّهُمَّ إِنِّي أَعْتَرِفُ بِذَنْبِي، فَقَدْ ظَلَمْتُ نَفْسِي وَآذَيْتُ غَيْرِي بِلِسَانِي وَغَضَبِي، فَاغْفِرْ لِي وَتُبْ عَلَيَّ.\nاللَّهُمَّ طَهِّرْ قَلْبِي مِنَ الْكِبْرِ وَالْحَسَدِ وَالْحِقْدِ وَسُوءِ الظَّنِّ، وَامْلَأْهُ بِالرَّحْمَةِ وَالْحِلْمِ وَالتَّوَاضُعِ وَالصَّبْرِ.\nاللَّهُمَّ اجْعَلْ لِسَانِي صَادِقًا لَطِيفًا، وَأَعِنِّي عَلَى قَوْلِ الْحَقِّ بِالرِّفْقِ وَالْعَدْلِ.\nاللَّهُمَّ إِذَا غَضِبْتُ فَذَكِّرْنِي بِكَ، وَارْزُقْنِي الصَّبْرَ، وَأَعِنِّي عَلَى السُّكُوتِ حَتَّى أَهْدَأَ.\nاللَّهُمَّ أَصْلِحْ مَا أَفْسَدْتُ بَيْنِي وَبَيْنَ إِخْوَانِي، وَاجْبُرْ قُلُوبَ مَنْ آذَيْتُهُمْ، وَارْزُقْنِي شَجَاعَةَ الِاعْتِذَارِ وَصِدْقَ التَّغْيِيرِ.\nاللَّهُمَّ لَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَاهْدِنِي لِأَحْسَنِ الْأَخْلَاقِ، وَاجْعَلْنِي مِمَّنْ يَكْظِمُونَ غَيْظَهُمْ وَيَعْفُونَ عَنِ النَّاسِ.\nاللَّهُمَّ اجْعَلْنِي عَبْدًا مُتَوَاضِعًا، رَحِيمًا، صَبُورًا، قَرِيبًا مِنْكَ، مَحْبُوبًا إِلَيْكَ.\nآمِينَ.',meaning:'O Allah, Du Allerbarmender, Du Barmherziger. Verbessere mein Herz, meine Absichten und meinen Charakter. Ich gestehe meine Fehler ein: Ich habe mir selbst Unrecht getan und andere mit meiner Zunge und meinem Zorn verletzt. Vergib mir und nimm meine Reue an. Reinige mein Herz von Hochmut, Neid, Groll und schlechten Vermutungen. Fülle es mit Barmherzigkeit, Nachsicht, Bescheidenheit und Geduld. Hilf mir, die Wahrheit freundlich und gerecht auszusprechen. Wenn ich wütend werde, erinnere mich an Dich und schenke mir Geduld. Heile die Beziehungen, die ich beschädigt habe, und die Herzen der Menschen, die ich verletzt habe. Gib mir den Mut zur Entschuldigung und die Aufrichtigkeit, mich wirklich zu verändern. Überlasse mich nicht einmal für einen Augenblick mir selbst. Leite mich zu einem schönen Charakter und mache mich zu einem Menschen, der seinen Zorn zurückhält und anderen vergibt. Mache mich zu einem bescheidenen, barmherzigen und geduldigen Diener, der Dir nahe ist und den Du liebst. Amin.'}
+  ];
+  let section='today',timer=null,remaining=90,phase=0,toastTimeout;
+  function toast(txt){$('toast').textContent=txt;$('toast').classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').classList.remove('show'),2300)}
+  function challengeIndex(){const diff=Math.floor((fromKey(currentDay)-fromKey(state.start))/msDay);return Math.max(0,Math.min(diff,29))}
+  function challengeNumber(){return Math.max(1,Math.floor((fromKey(currentDay)-fromKey(state.start))/msDay)+1)}
+  function completedCount(d){return Array.isArray(d.checks)?d.checks.filter(x=>Number.isInteger(x)&&x>=0&&x<tasks.length).length:0}
+  function streak(){let days=0,dt=fromKey(currentDay);if(completedCount(day())<4)dt=new Date(dt.getTime()-msDay);for(let n=0;n<3650;n++){const k=dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');if(!state.days[k]||completedCount(state.days[k])<4)break;days++;dt=new Date(dt.getTime()-msDay)}return days}
+  function nav(name){section=name;document.querySelectorAll('.section').forEach(el=>el.classList.toggle('active',el.id==='page-'+name));document.querySelectorAll('.nav-btn').forEach(el=>{const yes=el.dataset.nav===name;el.classList.toggle('active',yes);if(yes)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});window.scrollTo({top:0,behavior:'instant'});if(name==='journal')renderJournal()}
+  function renderToday(){
+    const now=day(),count=completedCount(now),percent=Math.round(count/tasks.length*100),idx=challengeIndex();
+    $('dateHeader').textContent=dateHeader().toUpperCase();$('challengeDay').textContent='Tag '+challengeNumber()+' · 30-Tage-Weg';$('streak').textContent=streak();
+    $('percent').textContent=percent;$('ring').style.background=`conic-gradient(#1a5749 0% ${percent}%, #e4eae3 ${percent}% 100%)`;
+    $('progressTitle').textContent=count===5?'Alhamdulillah, geschafft!':count===0?'Ein neuer Anfang':count===4?'Fast am Ziel':'Schritt für Schritt';
+    $('progressText').textContent=count===5?'Du hast heute alle fünf Schritte bewusst verfolgt.':'Du hast '+count+' von 5 Schritten abgehakt.';
+    $('doneCount').textContent=count+' / 5';
+    $('taskList').innerHTML=tasks.map((t,i)=>`<div class="task ${now.checks&&now.checks.includes(i)?'done':''}" data-task="${i}" role="checkbox" tabindex="0" aria-checked="${!!(now.checks&&now.checks.includes(i))}"><div class="check">✓</div><div><div class="task-title">${t[0]}</div><div class="task-sub">${t[1]}</div></div></div>`).join('');
+    const q=quotes[idx%quotes.length];$('quote').textContent=q[0];$('quoteSrc').textContent=q[1];
+    const prayer=prayers[idx%3];$('todayArabic').textContent=prayer.arabic.split('،')[0];$('todayMeaning').textContent=prayer.meaning.split('.')[0]+'.';
+    $('dayChallengeTitle').textContent=challenges[idx][0];$('dayChallengeDesc').textContent=challenges[idx][1];
+  }
+  function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function renderDuas(){
+    $('duaList').innerHTML=prayers.map((p,i)=>`<article class="card dua-card"><div class="dua-tag">${p.type}</div><div class="dua-title">${escapeHTML(p.title)}</div><div class="dua-src">${escapeHTML(p.source)}</div><div class="arabic dua-arabic" lang="ar" style="white-space:pre-line">${escapeHTML(p.arabic)}</div><div class="meaning">${escapeHTML(p.meaning)}</div><div class="dua-more" id="latin-${i}"><div class="line"></div><div class="translit">${escapeHTML(p.latin||'Für dieses lange persönliche Duʿāʾ lies gern die deutsche Bedeutung oder sprich es in deinen eigenen Worten.')}</div></div><div class="dua-actions"><button class="small-btn" data-copy="${i}">Arabisch kopieren</button><button class="small-btn" data-more="${i}">Lesehilfe ${p.latin?'anzeigen':'/ Hinweis'}</button></div></article>`).join('');
+  }
+  function renderJournal(){const d=day();document.querySelectorAll('.mood').forEach(el=>{const selected=Number(el.dataset.mood)===Number(d.mood);el.classList.toggle('selected',selected);el.setAttribute('aria-pressed',selected?'true':'false')});['trigger','response','next'].forEach(k=>{if(document.activeElement!==$(k))$(k).value=d[k]||''});$('statsText').textContent=Object.values(state.days).filter(d=>completedCount(d)>=4).length+' Tage mit mindestens vier erledigten Schritten.';}
+  function render(){renderToday();renderJournal();$('startDate').textContent=dateLong(state.start)}
+  function toggleTask(i){const d=day();if(!Array.isArray(d.checks))d.checks=[];d.checks=d.checks.includes(i)?d.checks.filter(v=>v!==i):[...d.checks,i];save();renderToday();if(completedCount(d)===5)toast('Mā shāʾ Allāh · Deine fünf Schritte sind geschafft')}
+  document.addEventListener('click',async e=>{
+    const btn=e.target.closest('[data-nav],[data-goto],[data-task],[data-copy],[data-more]');if(!btn)return;
+    if(btn.dataset.nav)nav(btn.dataset.nav);
+    if(btn.dataset.goto)nav(btn.dataset.goto);
+    if(btn.dataset.task!==undefined)toggleTask(Number(btn.dataset.task));
+    if(btn.dataset.more!==undefined){const el=$('latin-'+btn.dataset.more);el.classList.toggle('show');btn.textContent=el.classList.contains('show')?'Lesehilfe schließen':'Lesehilfe anzeigen'}
+    if(btn.dataset.copy!==undefined){const p=prayers[Number(btn.dataset.copy)];try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(p.arabic);else{const t=document.createElement('textarea');t.value=p.arabic;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}toast('Duʿāʾ kopiert')}catch(err){toast('Kopieren in diesem Browser nicht möglich')}}
+  });
+  $('taskList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.dataset.task!==undefined){e.preventDefault();toggleTask(Number(e.target.dataset.task))}});
+  document.querySelectorAll('.mood').forEach(btn=>btn.addEventListener('click',()=>{day().mood=Number(btn.dataset.mood);save();renderJournal();toast('Gefühl eingetragen')}));
+  ['trigger','response','next'].forEach(k=>$(k).addEventListener('input',()=>{day()[k]=$(k).value;save();$('savedLabel').textContent='Automatisch gespeichert ✓'}));
+  $('saveJournal').addEventListener('click',()=>{['trigger','response','next'].forEach(k=>day()[k]=$(k).value);save();toast('Eintrag gespeichert')});
+  function openSettings(open){$('settingsOverlay').classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
+  $('settingsBtn').addEventListener('click',()=>openSettings(true));$('closeSettings').addEventListener('click',()=>openSettings(false));$('settingsOverlay').addEventListener('click',e=>{if(e.target===$('settingsOverlay'))openSettings(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')openSettings(false)});
+  $('restartChallenge').addEventListener('click',()=>{if(confirm('Den 30-Tage-Plan heute neu beginnen? Deine bisherigen Notizen bleiben erhalten.')){state.start=todayKey();save();render();openSettings(false);toast('Dein neuer Anfang beginnt heute')}});
+  $('resetAll').addEventListener('click',()=>{if(confirm('Wirklich ALLE lokalen Einträge, Stimmungen und Fortschritte löschen? Dies kann nicht rückgängig gemacht werden.')){state={start:todayKey(),days:{}};save();render();openSettings(false);toast('Lokale Daten gelöscht')}});
+  $('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'Sakīnah',version:1,data:state},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sakinah-sicherung-'+todayKey()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('Datensicherung erstellt')});
+  $('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());const d=parsed.data;if(parsed.app!=='Sakīnah'||!d||!d.start||!d.days||typeof d.days!=='object'||Array.isArray(d.days))throw Error('Invalid');if(confirm('Bestehende lokale Einträge mit dieser Sicherung ersetzen?')){state=d;save();render();openSettings(false);toast('Sicherung importiert')}}catch(err){toast('Keine gültige Sakīnah-Sicherung')}e.target.value=''});
+  function updateBreath(){const m=Math.floor(remaining/60),s=remaining%60;$('breathCounter').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(!timer){$('breathLabel').textContent=remaining===0?'Geschafft':'Bereit?';$('breathCircle').classList.remove('inhale','exhale');return}const step=phase%10;const inhale=step<4;$('breathLabel').textContent=inhale?'Einatmen':'Ausatmen';$('breathCircle').classList.toggle('inhale',inhale);$('breathCircle').classList.toggle('exhale',!inhale)}
+  function stopBreath(){if(timer){clearInterval(timer);timer=null}$('breathBtn').textContent=remaining===0?'Noch einmal':'Weiteratmen';$('breathCircle').classList.remove('inhale','exhale')}
+  $('breathBtn').addEventListener('click',()=>{if(timer){stopBreath();$('breathBtn').textContent='Fortsetzen';return}if(remaining<=0){remaining=90;phase=0}timer=setInterval(()=>{remaining--;phase++;if(remaining<=0){remaining=0;stopBreath();toast('Alhamdulillah. Du hast dir Zeit genommen.')}updateBreath()},1000);$('breathBtn').textContent='Pausieren';$('breathReset').classList.remove('hidden');updateBreath()});
+  $('breathReset').addEventListener('click',()=>{stopBreath();remaining=90;phase=0;updateBreath();$('breathBtn').textContent='Übung starten';$('breathReset').classList.add('hidden')});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&timer){stopBreath();$('breathBtn').textContent='Fortsetzen'}else if(!document.hidden&&todayKey()!==currentDay){currentDay=todayKey();render()}});
+  window.addEventListener('pageshow',()=>{if(todayKey()!==currentDay){currentDay=todayKey();render()}});
+  renderDuas();save();render();updateBreath();
+  if('serviceWorker'in navigator&&location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>

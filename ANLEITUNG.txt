@@ -1,0 +1,59 @@
+SAKĪNAH – DEINE PERSÖNLICHE iPHONE-APP
+====================================
+
+DATEIEN
+- index.html: die fertige HTML-App
+- manifest.webmanifest, sw.js, icons/: iPhone-Installation und Offline-Modus
+- widget-scriptable.js: optionales echtes iPhone-Widget über die Scriptable-App
+
+1. APP ANSEHEN
+Öffne index.html im Browser. Die App benötigt für ihren normalen Inhalt
+keine Anmeldung und keine Internetverbindung. Die Daten werden lokal gespeichert.
+
+2. ALS APP AUF DEM iPHONE INSTALLIEREN
+Damit die Web-App einen festen Startbildschirm-Platz und Offline-Funktion bekommt,
+muss der gesamte Ordner auf einer HTTPS-Webadresse liegen.
+
+Ein einfacher Weg: Dateien aus diesem ZIP in einen Ordner entpacken und den
+Ordner bei einem statischen Webhost hochladen, z.B. Netlify Drop oder GitHub Pages.
+Wichtig: index.html und die anderen Dateien müssen im selben Web-Ordner liegen.
+
+Danach auf dem iPhone:
+- Die HTTPS-Webadresse in SAFARI öffnen.
+- Auf „Teilen“ tippen.
+- „Zum Home-Bildschirm“ wählen.
+- „Als Web-App öffnen“ aktivieren (wenn angeboten) und hinzufügen.
+
+3. ECHTES WIDGET INSTALLIEREN (OPTIONAL)
+HTML-Web-Apps können nicht selbst native iOS-Home-Bildschirm-Widgets bereitstellen.
+Deshalb ist das Widget eine separate Ergänzung mithilfe von „Scriptable“:
+- Im App Store die App „Scriptable“ installieren.
+- Scriptable öffnen, mit + ein neues Skript anlegen, z.B. „Sakīnah Widget“.
+- Den vollständigen Inhalt von widget-scriptable.js hineinkopieren und sichern.
+- Auf dem iPhone-Home-Bildschirm einen freien Bereich lang drücken.
+- Bearbeiten → Widget hinzufügen → Scriptable → Größe auswählen.
+- Das Widget lange drücken → Widget bearbeiten → Skript „Sakīnah Widget“ auswählen.
+
+Das Widget zeigt täglich einen neuen Impuls und ein kurzes Duʿāʾ. Die Tagesaufgaben
+und Tagebucheinträge der HTML-App werden NICHT mit Scriptable synchronisiert.
+Optional: Oben in widget-scriptable.js APP_URL mit deiner veröffentlichten
+Web-App-Adresse befüllen. Ein Tippen auf das Widget öffnet dann die App-Adresse.
+
+4. DATENSICHERHEIT
+- Die Web-App speichert Checklisten, Stimmung und Tagebuch im lokalen Browser-Speicher.
+- Kein Benutzerkonto, keine Datenübertragung an einen Server.
+- In Einstellungen gibt es Export/Import einer JSON-Sicherung.
+- Wird Safari-/Web-App-Speicher gelöscht, können Einträge verloren gehen.
+- Für regelmäßige Erinnerungen muss ggf. die iPhone-App „Erinnerungen“ genutzt werden;
+  diese Web-App verschickt keine automatischen Push-Mitteilungen.
+
+5. INHALT / QUELLEN
+- Charakter-Duʿāʾ: Sahih Muslim 771a (Auszug)
+- Seele reinigen: Sahih Muslim 2722
+- Reue: Koran 7:23
+- Zuflucht bei Wut: Sahih al-Bukhari 3282
+- Stärke und Zorn: Sahih al-Bukhari 6114 (sinngemäß)
+- Das lange persönliche Duʿāʾ ist frei formuliert, KEINE überlieferte Sunna-Formel.
+
+Die 30 Tage sind ein persönlicher Übungsplan, keine religiös vorgeschriebene Praxis.
+Die App ersetzt keine fachliche Unterstützung bei starken Stimmungsschwankungen.
